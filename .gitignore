@@ -1,0 +1,27 @@
+# Python bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+
+# (Optional) virtual env
+.venv/
+venv/
+
+# Test/coverage caches (safe to keep even if you might not use them)
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Type/checker caches (harmless to include)
+.mypy_cache/
+.pytype/
+.pyre/
+
+# OS / editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Env files (if you ever add secrets)
+.env
