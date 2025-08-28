@@ -12,3 +12,6 @@ Team members:
    git clone https://github.com/zakaahmed1/codeoff-aug25-teamvinayak.git
    cd codeoff-aug25-teamvinayak
    ```
+
+Question 1 uses a brute force approach to calculate the minimum travelling distance. (Vinayak)
+Question 2 and Question 3 use the greedy approach. (Question 2 - Niall, Question 3 - Zaka)
