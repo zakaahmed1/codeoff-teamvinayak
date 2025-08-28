@@ -12,22 +12,3 @@ Team members:
    git clone https://github.com/zakaahmed1/codeoff-aug25-teamvinayak.git
    cd codeoff-aug25-teamvinayak
    ```
-
-2. Install dependencies:
-
-  ```bash
-  pip install -r requirements.txt
-  ```
-
-3. Run the project:
-  ```bash
-  python src/main.py
-  ```
-
-## Repo Structure
-css
-src/        → main solution code
-tests/      → test scripts
-README.md   → project info
-requirements.txt → Python dependencies
-.gitignore
