@@ -1,0 +1,123 @@
+Pizza Delivery Code - Design Reasoning and Implementation Decisions
+================================================================
+
+1. PROBLEM ANALYSIS
+------------------
+The problem requires calculating the minimum travel cost for delivering pizzas to 10 locations using a single vehicle with limited capacity. Key constraints:
+- Vehicle capacity limitation requires multiple trips
+- Manhattan distance metric for cost calculation
+- All trips must start and end at depot (0,0)
+- Greedy approach is sufficient (not optimal solution required)
+
+2. ALGORITHM CHOICE: GREEDY APPROACH
+-----------------------------------
+Reason: The problem explicitly states that a greedy approach is sufficient and exact optimization is not required. This makes the solution:
+- Simpler to implement and understand
+- Faster execution time O(n²) vs exponential for optimal solutions
+- Meets competition requirements without over-engineering
+
+3. GREEDY STRATEGY IMPLEMENTATION
+--------------------------------
+The greedy selection works by:
+- Iterating through remaining locations in order
+- Adding locations to current trip until capacity is reached
+- No sophisticated ordering or optimization within trips
+
+Reason: This approach ensures vehicle capacity is maximally utilized while keeping the algorithm simple and predictable.
+
+4. DATA STRUCTURE DECISIONS
+--------------------------
+
+a) Using list.copy() for remaining_locations:
+   - Prevents modification of original input data
+   - Allows safe removal of processed locations
+   - Maintains data integrity for potential reuse
+
+b) trip_locations list:
+   - Stores locations for current trip
+   - Enables sequential travel cost calculation
+   - Clear separation between trip planning and execution
+
+5. DISTANCE CALCULATION APPROACH
+-------------------------------
+Manhattan distance function is separated because:
+- Reusability across multiple distance calculations
+- Clear mathematical implementation
+- Easy to test and verify independently
+- Follows single responsibility principle
+
+6. TRIP COST CALCULATION LOGIC
+-----------------------------
+The cost calculation follows this sequence:
+1. Depot → First location
+2. Between consecutive locations in trip
+3. Last location → Depot
+
+Reason: This ensures every movement is accounted for and matches real-world delivery patterns where vehicles must return to base.
+
+7. LOOP STRUCTURE CHOICES
+------------------------
+
+a) Outer while loop (remaining_locations):
+   - Continues until all deliveries are complete
+   - Natural termination condition
+   - Handles variable number of trips automatically
+
+b) Inner while loop with index manipulation:
+   - Allows removal of items during iteration
+   - Avoids index errors when list size changes
+   - More efficient than creating new filtered lists
+
+8. CAPACITY CONSTRAINT HANDLING
+------------------------------
+The capacity check (current_capacity + pizzas <= capacity) ensures:
+- No trip exceeds vehicle limits
+- Efficient vehicle utilization
+- Compliance with problem constraints
+- Simple boolean logic for decision making
+
+9. ERROR PREVENTION MEASURES
+---------------------------
+
+a) Copying input list:
+   - Prevents accidental modification of caller's data
+   - Enables multiple function calls with same input
+
+b) Depot coordinates as variables:
+   - Easy to modify if depot location changes
+   - Clear code readability
+   - Consistent reference point
+
+10. TESTING AND VALIDATION
+-------------------------
+The example in __main__ provides:
+- 10 locations as required by problem
+- Mixed pizza quantities to test capacity logic
+- Realistic coordinate values
+- Capacity that requires multiple trips
+
+11. PERFORMANCE CONSIDERATIONS
+-----------------------------
+- Time complexity: O(n²) where n is number of locations
+- Space complexity: O(n) for storing locations and trips
+- Acceptable for competition constraints (only 10 locations)
+- No premature optimization that would complicate code
+
+12. CODE MAINTAINABILITY
+-----------------------
+- Clear variable names (current_capacity, trip_locations)
+- Comprehensive docstrings explaining strategy
+- Logical code organization with helper functions
+- Comments explaining non-obvious logic steps
+
+13. COMPETITION-SPECIFIC DECISIONS
+---------------------------------
+- Output only numeric result as required
+- Documented greedy strategy for judges
+- No unnecessary features (timing, customer satisfaction)
+- Focus on distance minimization only
+- Python implementation as specified
+
+CONCLUSION
+----------
+This implementation prioritizes simplicity, correctness, and meeting competition requirements over optimal performance. The greedy approach provides a reasonable solution while remaining easy to understand and verify.
